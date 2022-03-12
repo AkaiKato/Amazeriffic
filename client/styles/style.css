@@ -8,17 +8,75 @@ footer {
     min-width: 855px;
 }
 
-header.conatainer,
-main.container,
-footer.conatainer {
+header .container,
+main .container,
+footer .container {
     max-width: 855px;
     margin: auto;
 }
 
 header {
     background: white;
+    overflow: auto;
+    border-bottom: 1px solid #dddddd;
+    padding: 25px 0 25px 0;
+}
+
+header nav {
+    float: right;
+    width: 285px;
+}
+
+a {
+    color: #FF0000;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 main {
     background: white;
+    overflow: auto;
+    padding: 40px;
+}
+
+.main-left {
+    float: left;
+    width: 570px;
+}
+
+main .lightbulb {
+    float: right;
+    width: 285px;
+}
+
+footer {
+    margin-top: 5%;
+}
+
+footer .contact {
+    float: left;
+    width: 570px;
+}
+
+footer .sitemap {
+    float: right;
+    width: 285px;
+}
+
+.mapleft {
+    float: left;
+}
+
+.mapright {
+    float: right;
+}
+
+.faqs {
+    float: left;
+    margin: 5%;
+}
+
+.QA {
+    font-weight: bold;
+    font-size: 1.2em;
 }
