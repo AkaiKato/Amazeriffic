@@ -1,5 +1,6 @@
 body {
     background: #f9e933;
+    font-family: 'Droid Sans', sans-serif;
 }
 
 header,
@@ -22,6 +23,43 @@ header {
     padding: 25px 0 25px 0;
 }
 
+h1 {
+    float: left;
+    width: 570px;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: italic;
+    font-size: 3em;
+    color: #BB3333;
+}
+
+h2 {
+    float: left;
+    width: 570px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h3 {
+    float: left;
+    width: 570px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5em;
+    padding-top: 5%;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h5 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.25em;
+    margin-bottom: 20px;
+}
+
 header nav {
     float: right;
     width: 285px;
@@ -31,6 +69,11 @@ a {
     color: #FF0000;
     text-decoration: none;
     font-weight: bold;
+}
+
+a:hover {
+    background: #FF0000;
+    color: black;
 }
 
 main {
