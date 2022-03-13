@@ -21,7 +21,7 @@ var main = function() {
             if ($element.parent().is(":nth-child(1)")) {
 
                 $content = $("<ul>");
-                for (var i = toDos.length; i > -1; i--) {
+                for (var i = toDos.length - 1; i > -1; i--) {
                     $content.append($("<li>").text(toDos[i]));
                 }
                 $("main .content").append($content)
@@ -36,8 +36,14 @@ var main = function() {
 
             } else if ($element.parent().is(":nth-child(3)")) {
 
-                console.log("Щелчок на третьей вкладке!");
-                toDos.push($input.val())
+                var $input = $("<input>");
+                var $button = $("<button>").text("+")
+                $button.on("click", function() {
+                    toDos.push($input.val());
+                    $input.val("");
+                });
+                $content = $("<div>").append($input).append($button);
+                $("main .content").append($content)
             }
             return false;
         });
