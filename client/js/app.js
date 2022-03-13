@@ -1,13 +1,8 @@
-var main = function() {
+var main = function(toDoObjects) {
     "use strict";
-    var toDos = [
-        "Закончить писать эту книгу",
-        "Вывести Грейси на прогулку в парк",
-        "Ответить на электронные письма",
-        "Подготовиться к лекции в понедельник",
-        "Обновить несколько новых задач",
-        "Купить продукты"
-    ];
+    var toDos = toDoObjects.map(function(toDo) {
+        return toDo.description;
+    })
     $(".tabs a span").toArray().forEach(function(element) {
         $(element).on("click", function() {
 
@@ -24,7 +19,7 @@ var main = function() {
                 for (var i = toDos.length - 1; i > -1; i--) {
                     $content.append($("<li>").text(toDos[i]));
                 }
-                $("main .content").append($content)
+                $("main .content").append($content);
 
             } else if ($element.parent().is(":nth-child(2)")) {
 
@@ -32,7 +27,7 @@ var main = function() {
                 toDos.forEach(function(todo) {
                     $content.append($("<li>").text(todo));
                 });
-                $("main .content").append($content)
+                $("main .content").append($content);
 
             } else if ($element.parent().is(":nth-child(3)")) {
 
@@ -43,7 +38,7 @@ var main = function() {
                     $input.val("");
                 });
                 $content = $("<div>").append($input).append($button);
-                $("main .content").append($content)
+                $("main .content").append($content);
             }
             return false;
         });
@@ -51,4 +46,8 @@ var main = function() {
     $(".tabs a:first-child span").trigger("click");
 };
 
-$(document).ready(main);
+$(document).ready(function() {
+    jQuery.getJSON("todos.json", function(toDoObjects) {
+        main(toDoObjects);
+    });
+});
