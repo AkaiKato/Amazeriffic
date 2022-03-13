@@ -71,7 +71,7 @@ a {
     font-weight: bold;
 }
 
-a:hover {
+footer a:hover {
     background: #FF0000;
     color: black;
 }
@@ -122,4 +122,27 @@ footer .sitemap {
 .QA {
     font-weight: bold;
     font-size: 1.2em;
+}
+
+.tabs a span {
+    display: inline-block;
+    border-radius: 5px 5px 0 0;
+    width: 100px;
+    margin-right: 10px;
+    text-align: center;
+    background: #ddd;
+    padding: 5px;
+}
+
+.tabs a span.active {
+    background: #eee;
+}
+
+.content {
+    padding: 0 20px 20px 20px;
+    overflow: auto;
+}
+
+.content ul li {
+    padding-top: 0;
 }
