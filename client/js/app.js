@@ -65,14 +65,17 @@ var main = function(toDoObjects) {
                 $button.on("click", function() {
                     var description = $input.val(),
                         tags = $tagInput.val().split(",");
-                    toDoObjects.push({ "description": description, "tags": tags });
+                    var newToDo = { "description": description, "tags": tags };
 
-                    toDos = toDoObjects.map(function(toDo) {
-                        return toDo.description;
-                    });
-
-                    $input.val("");
-                    $tagInput.val("");
+                    $.post("todos", newToDo, function(result) {
+                        console.log(result);
+                        toDoObjects.push(newToDo);
+                        toDos = toDoObjects.map(function(toDo) {
+                            return toDo.description
+                        })
+                        $input.val("");
+                        $tagInput.val("");
+                    })
                 });
 
             }

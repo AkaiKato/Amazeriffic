@@ -1,6 +1,5 @@
 var express = require("express"),
     http = require("http"),
-    mongoose = ("mongoose"),
     app = express(),
     toDos = [{
             "description": "Купить продукты",
@@ -27,8 +26,23 @@ var express = require("express"),
             "tags": ["писательство", "работа"]
         }
     ]
-app.use('/', express.static(__dirname + "/client"));
 http.createServer(app).listen(3000);
+app.use(express.static(__dirname + "/client"));
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/todos", function(req, res) {
+    var newToDo = req.body;
+    console.log(newToDo);
+    toDos.push(newToDo);
+    res.json({ "message": "Вы размещаетесь на сервере!" })
+})
+
+
 app.get("/todos.json", function(req, res) {
     res.json(toDos);
 });
+
+app.post("/todos", function(req, res) {
+    console.log("Данные были отправлены на сервер");
+    res.json({ "message": "Вы размещаетесь на сервере!" })
+})
