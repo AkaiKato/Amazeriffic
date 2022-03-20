@@ -6,7 +6,16 @@ var express = require("express"),
     mongoose = require("mongoose"),
     app = express();
 
-http.createServer(app).listen(3000);
+app.get("/users/:username/todos.json", ToDosController.index);
+app.post("/users/:username/todos", ToDosController.create);
+app.put("/users/:username/todos/:id", ToDosController.update);
+app.delete("/users/:username/todos/:id", ToDosController.destroy);
+
+app.get("/users.json", UsersController.index);
+app.post("/users", UsersController.create);
+app.get("/users/:username", UsersController.show);
+app.put("/users/:username", UsersController.update);
+app.delete("/users/:username", UsersController.destroy);
 
 app.use('/', express.static(__dirname + "/client"));
 app.use('/users/:username', express.static(__dirname + "/client"));
