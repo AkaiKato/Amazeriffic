@@ -85,6 +85,51 @@ var main = function(toDoObjects) {
     $(".tabs a:first-child span").trigger("click");
 };
 
+var liaWithEditOrDeleteOnClick = function(todo, callback) {
+    var $todoListItem = $("<li>").text(todo.description),
+        $todoEditLink = $("<a>").attr("href", "todos/" + todo._id),
+        $todoRemoveLink = $("<a>").attr("href", "todos/" + todo._id);
+
+    $todoEditLink.addClass("linkEdit");
+    $todoRemoveLink.addClass("linkRemove");
+
+    $todoRemoveLink.text("Удалить");
+    $todoRemoveLink.on("click", function() {
+        $.ajax({
+            url: "/todos/" + todo._id,
+            type: "DELETE"
+        }).done(function(responde) {
+            callback();
+        }).fail(function(err) {
+            console.log("error on delete 'todo'!");
+        });
+        return false;
+    });
+    $todoListItem.append($todoRemoveLink);
+
+    $todoEditLink.text("Редактировать");
+    $todoEditLink.on("click", function() {
+        var newDescription = prompt("Введите новое наименование для задачи", todo.description);
+        if (newDescription !== null && newDescription.trim() !== "") {
+            $.ajax({
+                "url": "/todos/" + todo._id,
+                "type": "PUT",
+                "data": { "description": newDescription },
+            }).done(function(responde) {
+                callback();
+            }).fail(function(err) {
+                console.log("Произошла ошибка: " + err);
+            });
+        }
+        return false;
+    });
+    $todoListItem.append($todoEditLink);
+
+    return $todoListItem;
+}
+
+
+
 var tagOrg = function(toDoObjects) {
     var tagList = [],
         tagsObject = [];
