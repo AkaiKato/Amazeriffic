@@ -129,7 +129,6 @@ var liaWithEditOrDeleteOnClick = function(todo, callback) {
 }
 
 
-
 var tagOrg = function(toDoObjects) {
     var tagList = [],
         tagsObject = [];

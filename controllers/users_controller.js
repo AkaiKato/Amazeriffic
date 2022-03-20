@@ -14,21 +14,19 @@ UsersController.index = function(req, res) {
     });
 };
 
-// Отобразить пользователя 
 UsersController.show = function(req, res) {
     console.log('Вызвано действие: отобразить пользователя');
     User.find({ 'username': req.params.username }, function(err, result) {
         if (err) {
             console.log(err);
         } else if (result.length !== 0) {
-            res.sendfile('../client/todolist.html');
+            res.sendfile('./client/list.html');
         } else {
             res.send(404);
         }
     });
 };
 
-// Создать нового пользователя 
 UsersController.create = function(req, res) {
     console.log('Вызвано действие: создать пользователя');
     var username = req.body.username;
@@ -57,7 +55,6 @@ UsersController.create = function(req, res) {
     });
 };
 
-// Обновить существующего пользователя 
 UsersController.update = function(req, res) {
     console.log("Вызвано действие: обновить пользователя");
     var username = req.params.username;
@@ -78,7 +75,6 @@ UsersController.update = function(req, res) {
     });
 };
 
-// Удалить существующего пользователя 
 UsersController.destroy = function(req, res) {
     console.log("Вызвано действие: удалить пользователя");
     var username = req.params.username;
