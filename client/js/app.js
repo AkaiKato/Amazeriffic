@@ -1,17 +1,5 @@
 var main = function() {
     "use strict";
-    $(".tabs a span").toArray().forEach(function(element) {
-        $(element).on("click", function() {
-            $(".tabs a span").removeClass("active");
-            $(element).addClass("active");
-            $("main .content").empty();
-            return false;
-        });
-    });
-}
-
-/*var main = function() {
-    "use strict";
     var toDos = [
         "Закончить писать эту книгу",
         "Вывести Грейси на прогулку в парк",
@@ -20,7 +8,7 @@ var main = function() {
         "Обновить несколько новых задач",
         "Купить продукты"
     ];
-        
+
     $(".tabs a span").toArray().forEach(function(element) {
         $(element).on("click", function() {
 
@@ -62,6 +50,6 @@ var main = function() {
         });
     });
     $(".tabs a:first-child span").trigger("click");
-};*/
+};
 
 $(document).ready(main);
